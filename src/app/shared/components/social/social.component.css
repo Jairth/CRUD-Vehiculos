@@ -1,0 +1,19 @@
+:host([svg-black]) {
+  --fill: #000;
+}
+[role="list"] {
+  display: flex;
+  gap: var(--gap, 1.5rem);
+
+  a {
+    &:is(:hover, :focus, :focus-visible) svg {
+      fill: #ff6565;
+    }
+  }
+  & svg {
+    fill: var(--fill, #fff);
+    font-size: var(--svg-size, 1.25rem);
+
+    transition: fill var(--transition) ease;
+  }
+}

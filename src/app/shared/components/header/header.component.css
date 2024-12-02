@@ -1,0 +1,30 @@
+.wrapper {
+  --boxed-size: 53.75rem;
+}
+
+.header {
+  max-height: var(--heigh-header);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logo {
+  & svg {
+    font-size: 15rem;
+  }
+}
+
+.cart {
+  & svg {
+    fill: #fff;
+    font-size: 1.5rem;
+  }
+}
+
+@media (width <= 650px) {
+  app-socials {
+    display: none;
+  }
+}

@@ -1,0 +1,29 @@
+.product-action {
+  width: 3.25rem;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #000;
+  border-radius: 50%;
+  margin-inline: auto;
+  transition: 200ms ease;
+  transition-property: box-shadow, translate;
+
+  &:is(:hover, :focus, :focus-visible) {
+    box-shadow: 3px 3px 0 0 #000;
+    translate: -3px -3px;
+  }
+
+  & svg {
+    font-size: 1.5rem;
+  }
+}
+
+.custom-button {
+  --mb-start: 0;
+  padding: 1.25rem;
+}
+.custom-button:nth-child(1) {
+  background-color: #fff;
+}

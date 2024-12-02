@@ -1,0 +1,44 @@
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+
+  & li {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    & a {
+      transition: color 300ms ease;
+    }
+
+    &:hover a {
+      color: #ff6565;
+    }
+  }
+}
+.line {
+  position: relative;
+  width: var(--width-lines);
+  height: 2px;
+  background-color: #000;
+  margin-inline: calc(var(--p-title) * -1);
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 10px;
+    width: 0.9375rem;
+    height: 2px;
+    background-color: #000;
+  }
+}
+.left::after {
+  left: 0;
+}
+.right::after {
+  right: 0;
+}

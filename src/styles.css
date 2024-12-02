@@ -1,0 +1,47 @@
+@import "@angular/cdk/overlay-prebuilt.css";
+@import "./styles/_reset.css";
+@import "./styles/_variables.css";
+@import "./styles/_background-body.css";
+@import "./styles/_utilities.css";
+
+/* lexend-exa-latin-wght-normal */
+@font-face {
+  font-family: "Lexend Exa Variable";
+  font-style: normal;
+
+  font-display: swap;
+  font-weight: 100 900;
+  src: url(https://cdn.jsdelivr.net/fontsource/fonts/lexend-exa:vf@latest/latin-wght-normal.woff2)
+    format("woff2-variations");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Lexend Exa Variable", sans-serif;
+  padding-block: 2rem;
+}
+
+:root {
+  --font-sans: "Lexend Exa Variable";
+}
+.border-destructive {
+  box-shadow: 0 3px 0 0 hsl(0 84.2% 60.2%);
+}
+
+body.checkout-active #cdk-overlay-0,
+body.checkout-active #cdk-overlay-1 {
+  width: clamp(17.875rem, -8.5273rem + 54.9333vw, 30.75rem) !important;
+}
+
+@media (max-width: 769px) {
+  body.checkout-active #cdk-overlay-0,
+  body.checkout-active #cdk-overlay-1 {
+    width: clamp(10.125rem, -6.7162rem + 99.7996vw, 41.25rem) !important;
+  }
+}

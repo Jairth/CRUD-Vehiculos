@@ -1,0 +1,188 @@
+<div class="wrapper">
+  <div class="container__page">
+    <h3 class="title">Billing details</h3>
+    <div class="grid-container">
+      <form class="left flow" [formGroup]="form()">
+        <hlm-form-field>
+          <label hlmLabel for="first-name">First Name</label>
+          <input
+            required
+            hlmInput
+            type="text"
+            id="first-name"
+            name="first-name"
+            placeholder="First Name"
+            formControlName="firstName"
+          />
+          <hlm-error>Your first name is required</hlm-error>
+        </hlm-form-field>
+        <hlm-form-field>
+          <label hlmLabel for="last-name">Last Name</label>
+          <input
+            required
+            hlmInput
+            type="text"
+            id="last-name"
+            name="last-name"
+            placeholder="Last Name"
+            formControlName="lastName"
+          />
+          <hlm-error>Your last name is required</hlm-error>
+        </hlm-form-field>
+
+        <hlm-form-field>
+          <label hlmLabel for="company-name">Company Name</label>
+          <input
+            required
+            hlmInput
+            type="text"
+            id="company-name"
+            name="company-name"
+            placeholder="Company Name"
+            formControlName="companyName"
+          />
+          <hlm-error>Your company name is required</hlm-error>
+        </hlm-form-field>
+
+        <hlm-form-field>
+          <label hlmLabel for="country-name">Country</label>
+          <brn-select
+            class="inline-block"
+            placeholder="Country"
+            formControlName="country"
+          >
+            <hlm-select-trigger>
+              <hlm-select-value />
+            </hlm-select-trigger>
+            <hlm-select-content>
+              @if (countries()) {
+                @for (country of countries(); track country.name.common) {
+                  <hlm-option [value]="country.name.common">{{
+                    country.name.common
+                  }}</hlm-option>
+                }
+              }
+            </hlm-select-content>
+          </brn-select>
+          <hlm-error>Your country name is required</hlm-error>
+        </hlm-form-field>
+        <hlm-form-field>
+          <label hlmLabel for="street-address">Street Address</label>
+          <input
+            required
+            hlmInput
+            type="text"
+            id="street-address"
+            name="street-address"
+            placeholder="House number and street name"
+            formControlName="streeAddress"
+          />
+          <hlm-error>Your street address is required</hlm-error>
+        </hlm-form-field>
+        <hlm-form-field>
+          <label hlmLabel for="town-city">City</label>
+          <input
+            required
+            hlmInput
+            type="text"
+            id="town-city"
+            name="town-city"
+            placeholder="City"
+            formControlName="city"
+          />
+          <hlm-error>Your city is required</hlm-error>
+        </hlm-form-field>
+        <hlm-form-field>
+          <label hlmLabel for="state">State</label>
+          <brn-select
+            class="inline-block"
+            placeholder="State"
+            formControlName="state"
+          >
+            <hlm-select-trigger>
+              <hlm-select-value />
+            </hlm-select-trigger>
+            <hlm-select-content>
+              @if (countries()) {
+                @for (country of countries(); track country.name.common) {
+                  <hlm-option [value]="country.capital[0]">{{
+                    country.capital[0]
+                  }}</hlm-option>
+                }
+              }
+            </hlm-select-content>
+          </brn-select>
+          <hlm-error>Your state is required</hlm-error>
+        </hlm-form-field>
+        <hlm-form-field>
+          <label hlmLabel for="zip-code">Zip Code</label>
+          <input
+            required
+            hlmInput
+            type="number"
+            id="zip-code"
+            name="zip-code"
+            placeholder="Zip code"
+            formControlName="zipCode"
+          />
+          <hlm-error>Your zip code is required</hlm-error>
+        </hlm-form-field>
+        <hlm-form-field>
+          <label hlmLabel for="phone">Phone</label>
+          <input
+            required
+            hlmInput
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Phone"
+            formControlName="phone"
+          />
+          <hlm-error>Your phone is required</hlm-error>
+        </hlm-form-field>
+        <hlm-form-field>
+          <label hlmLabel for="email">Email</label>
+
+          <input
+            required
+            hlmInput
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Email"
+            formControlName="email"
+          />
+          <hlm-error>Your email is required</hlm-error>
+        </hlm-form-field>
+        <hlm-form-field>
+          <h3 class="title">Additional information</h3>
+          <div class="form-row">
+            <label hlmLabel for="notes">Order notes (Optional)</label>
+            <textarea
+              hlmInput
+              name="notes"
+              id="notes"
+              placeholder="Notes about your order..."
+              formControlName="orderNotes"
+            ></textarea>
+          </div>
+        </hlm-form-field>
+        <button class="custom-button" type="submit">Place order</button>
+      </form>
+      <div class="right">
+        <article class="card">
+          <picture class="image">
+            <img src="/jane-wick.webp" alt="" />
+          </picture>
+          <h3 class="title">Jane Wick</h3>
+          <p>
+            Let’s find a new way to think about the entire taxonomy of solar
+            system objects, and not clutch to this concept
+          </p>
+
+          <app-social svg-black />
+        </article>
+      </div>
+    </div>
+  </div>
+</div>
