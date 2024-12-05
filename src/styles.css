@@ -39,6 +39,26 @@ body.checkout-active #cdk-overlay-1 {
   width: clamp(17.875rem, -8.5273rem + 54.9333vw, 30.75rem) !important;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 1.25rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 1.25rem;
+  border: 2px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
 @media (max-width: 769px) {
   body.checkout-active #cdk-overlay-0,
   body.checkout-active #cdk-overlay-1 {

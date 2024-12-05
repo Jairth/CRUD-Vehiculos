@@ -1,0 +1,81 @@
+<hlm-sheet side="right">
+  <button class="custom-button" id="add-product" brnSheetTrigger>
+    Añadir empleado
+  </button>
+  <hlm-sheet-content *brnSheetContent="let ctx">
+    <h2 class="title">Añadir empleado</h2>
+
+    <form class="flow" [formGroup]="productForm()" (ngSubmit)="addProduct(ctx)">
+      <hlm-form-field>
+        <label hlmLabel for="product-nombre">Nombre</label>
+        <input required hlmInput type="text" id="product-nombre" name="product-nombre" placeholder="Marca"
+          formControlName="nombre" />
+        <hlm-error>El nombre es obligatoria</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="product-email">Correo</label>
+        <input required hlmInput type="email" id="product-email" name="product-email" placeholder="@Correo"
+          formControlName="email" />
+        <hlm-error>El correo es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="product-celular">Celular</label>
+        <input required hlmInput type="number" id="product-celular" name="product-celular" placeholder="Celular"
+          formControlName="celular" />
+        <hlm-error>El celular es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="tipo-documento">Tipo documento</label>
+        <brn-select class="inline-block" placeholder="Tipo de documento" formControlName="tipo_documento">
+          <hlm-select-trigger>
+            <hlm-select-value />
+          </hlm-select-trigger>
+          <hlm-select-content>
+            <hlm-option value="DNI">DNI</hlm-option>
+            <hlm-option value="RUC">RUC</hlm-option>
+            <hlm-option value="Carnet extranjeria">Carnet extranjeria</hlm-option>
+          </hlm-select-content>
+        </brn-select>
+        <hlm-error>El tipo de documento es obligatoria</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="producto-documento">Número de documento</label>
+          <input hlmInput type="number" id="producto-documento" name="producto-documento" placeholder="Número de documento"
+            formControlName="documento" />
+        </div>
+        <hlm-error>El número de documento es obligatorio</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="product-licencia">Licencia</label>
+        <input hlmInput type="text" id="product-licencia" name="product-licencia" placeholder="Licencia"
+          formControlName="licencia" />
+        <hlm-error>La licencia es obligatoria</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="fecha-nacimiento">Fecha de nacimiento</label>
+          <input hlmInput type="date" id="fecha-nacimiento" name="fecha-nacimiento" placeholder="Número de asientos"
+            formControlName="nacimiento" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="producto-comunicacion">Preferencia de comunicación</label>
+        <brn-select class="inline-block" placeholder="Preferencia de comunicación" formControlName="preferencia_comunicacion">
+          <hlm-select-trigger>
+            <hlm-select-value />
+          </hlm-select-trigger>
+          <hlm-select-content>
+            <hlm-option value="WhatsApp">WhatsApp</hlm-option>
+            <hlm-option value="Facebook">Facebook</hlm-option>
+            <hlm-option value="Instagram">Instagram</hlm-option>
+          </hlm-select-content>
+        </brn-select>
+        <!-- <hlm-error>El tipo de documento es obligatoria</hlm-error> -->
+      </hlm-form-field>
+      <button class="custom-button" type="submit">Añadir</button>
+    </form>
+  </hlm-sheet-content>
+</hlm-sheet>

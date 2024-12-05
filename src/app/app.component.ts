@@ -25,6 +25,9 @@ import { NavComponent } from './shared/components/nav/nav.component';
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
+  host: {
+    'class': 'flow',
+  }
 })
 export class AppComponent {
   title = 'reactiveForms';

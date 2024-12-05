@@ -1,38 +1,30 @@
-import { AsyncPipe } from "@angular/common";
-import {
-	ChangeDetectionStrategy,
-	Component,
-	ElementRef,
-	inject,
-	signal,
-	viewChild,
-	viewChildren,
-} from "@angular/core";
-import { forkJoin, tap } from "rxjs";
-import type { Product } from "../../models";
-import { InfoProductsService } from "../../services";
-import { AddProductComponent } from "../add-product/add-product.component";
-import { DialogDeleteProductComponent } from "../dialogs/delete-product.component";
-import { EditProductComponent } from "../edit-product/edit-product.component";
+import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild, viewChildren } from '@angular/core';
+import { tap, forkJoin } from 'rxjs';
+import type { Product } from '../../models';
+import { InfoProductsService } from '../../services';
+import { AsyncPipe } from '@angular/common';
+import { AddClientComponent } from '../add-client/add-client.component';
+import { DialogsComponent } from '../dialogs/dialogs.component';
+import { EditClientComponent } from '../edit-client/edit-client.component';
 
 @Component({
-	selector: "app-product-list",
-	standalone: true,
-	imports: [
-		AddProductComponent,
-		DialogDeleteProductComponent,
-		AsyncPipe,
-		EditProductComponent,
-	],
-	templateUrl: "./product-list.component.html",
-	styleUrl: "./product-list.component.css",
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	host: {
+  selector: 'app-list-clients',
+  standalone: true,
+  imports: [
+    AsyncPipe,
+    AddClientComponent,
+    DialogsComponent,
+    EditClientComponent
+  ],
+  templateUrl: './list-clients.component.html',
+  styleUrl: './list-clients.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
     'class': 'wrapper'
   }
 })
-export default class ProductListComponent {
-	mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
+export default class ListClientsComponent {
+  mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
 	childrenCheckbox =
 		viewChildren<ElementRef<HTMLInputElement>>("childrenCheckbox");
 	isVisible = signal(false);

@@ -1,0 +1,63 @@
+<div class="container__page">
+  <div class="title-row">
+    <h3 class="title">Lista de empleados</h3>
+    @if (isVisible()) {
+    <div class="delete">
+      <span>{{ this.listProductsSelect().length }} Select</span>
+    </div>
+    <app-delete-staff (staffDelete)="onDeleteProducts()" />
+    }
+    <app-add-staff (staffAdded)="refresh()" />
+  </div>
+  @let products = products$ | async;
+  @defer (when products) {
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="tb-head">
+            <input type="checkbox" #mainCheckbox (click)="onCheckboxAll()" />
+          </th>
+          <th class="tb-head">Nombre</th>
+          <th class="tb-head">Correo</th>
+          <th class="tb-head description w-40">Documento - Fecha nacimiento</th>
+          <th class="tb-head">Licencia - Celular</th>
+          <th class="tb-head">Preferencia comunicación</th>
+          <th class="tb-head"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of products; track product.id) {
+        <tr>
+          <td>
+            <input type="checkbox" [name]="product.nombre" [value]="product.id" #childrenCheckbox
+              (click)="onCheckbox(product)" />
+          </td>
+          <td>
+            <h5>{{ product.nombre }}</h5>
+          </td>
+          <td>
+            <span>{{ product.email }}</span>
+          </td>
+          <td>{{ product.tipo_documento }}: {{ product.documento }} / {{ product.nacimiento }}</td>
+          <td>
+            <span>{{ product.licencia }}</span> -
+            <span>{{ product.celular }}</span>
+          </td>
+          <td>
+            <span>{{ product.preferencia_comunicacion }}</span>
+          </td>
+          <td>
+            <app-edit-staff [staff]="product" (productEdit)="refresh()" />
+          </td>
+        </tr>
+        } @empty {
+        <h4 class="empty">Sin vehículos disponibles</h4>
+        }
+      </tbody>
+    </table>
+  </div>
+  } @placeholder (minimum 1s) {
+  <h1>Loading...</h1>
+  }
+</div>

@@ -1,11 +1,13 @@
+import { RouterOutlet } from '@angular/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { ProductListComponent } from '../../features';
+
 import { TitleComponent } from '../../../shared';
+import ProductListComponent from '../../features/product-list/product-list.component';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [ProductListComponent, TitleComponent],
+  imports: [RouterOutlet],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush

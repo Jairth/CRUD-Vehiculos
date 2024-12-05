@@ -49,3 +49,29 @@ export interface vehiculoForm {
 	soat: FormControl<string | null>;
 	transmision: FormControl<string | null>;
 }
+
+export interface Staff {
+	id: number;
+	celular: number;
+	tipo_documento: string;
+	documento: number;
+	email: string;
+	licencia: number;
+	nacimiento: string;
+	nombre: string;
+	preferencia_comunicacion: string;
+	administrador_dni?: string;
+}
+
+export interface StaffForm {
+	id?: FormControl<number | null>;
+	celular: FormControl <number | null>;
+	tipo_documento: FormControl <string | null>;
+	documento: FormControl <number | null>;
+	email: FormControl <string | null>;
+	licencia: FormControl <number | null>;
+	nacimiento: FormControl <string | null>;
+	nombre: FormControl <string | null>;
+	preferencia_comunicacion: FormControl <string | null>;
+	administrador_dni?: FormControl< string | null>;
+}

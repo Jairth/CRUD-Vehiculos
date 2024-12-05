@@ -1,0 +1,92 @@
+<hlm-sheet side="right">
+  <button class="custom-button" id="add-product" brnSheetTrigger>
+    Añadir auto
+  </button>
+  <hlm-sheet-content *brnSheetContent="let ctx">
+    <h2 class="title">Añadir auto</h2>
+
+    <form class="flow" [formGroup]="productForm()" (ngSubmit)="addProduct(ctx)">
+      <hlm-form-field>
+        <label hlmLabel for="product-marca">Marca</label>
+        <input required hlmInput type="text" id="product-marca" name="product-marca" placeholder="Marca"
+          formControlName="marca" />
+        <hlm-error>La marca es obligatoria</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="product-modelo">Modelo</label>
+        <input required hlmInput type="text" id="product-modelo" name="product-modelo" placeholder="Modelo"
+          formControlName="modelo" />
+        <hlm-error>El modelo es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="category">Categoría</label>
+        <brn-select class="inline-block" placeholder="Categoría del vehículo" formControlName="categoria">
+          <hlm-select-trigger>
+            <hlm-select-value />
+          </hlm-select-trigger>
+          <hlm-select-content>
+            <hlm-option value="Camioneta">Camioneta</hlm-option>
+            <hlm-option value="Deportivo">Deportivo</hlm-option>
+            <hlm-option value="Mini Van">Mini Van</hlm-option>
+            <hlm-option value="SUV">SUV</hlm-option>
+            <hlm-option value="Convertible">Convertible</hlm-option>
+            <hlm-option value="Sedán">Sedán</hlm-option>
+            <hlm-option value="Stagion Wagon">Stagion Wagon</hlm-option>
+            <hlm-option value="Camioneta pick-up">Camioneta pick-up</hlm-option>
+            <hlm-option value="Coupé">Coupé</hlm-option>
+            <hlm-option value="Arenero">Arenero</hlm-option>
+          </hlm-select-content>
+        </brn-select>
+        <hlm-error>La categoría es obligatoria</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="producto-imagen">URL Imagen</label>
+          <input hlmInput type="text" id="producto-imagen" name="producto-imagen" placeholder="URL Imagen"
+            formControlName="imagen" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="product-placa">Placa</label>
+        <input hlmInput type="text" id="product-placa" name="product-placa" placeholder="Placa"
+          formControlName="placa" />
+        <hlm-error>La placa es obligatoria</hlm-error>
+        @if (productForm().get('placa')?.hasError('invalidFormat')) {
+        <hlm-error>
+          La placa debe tener el formato correcto (ej. ABG-432)
+        </hlm-error>
+        }
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="nro-asientos">Número de asientos</label>
+          <input hlmInput type="number" id="nro-asientos" name="nro-asientos" placeholder="Número de asientos"
+            formControlName="numero_asientos" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="producto-color">Color</label>
+          <input hlmInput type="text" id="producto-color" name="producto-color" placeholder="Color"
+            formControlName="color" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="producto-transmision">Transmisión</label>
+          <input hlmInput type="text" id="producto-transmision" name="producto-transmision" placeholder="Transimisión"
+            formControlName="transmision" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="producto-soat">Soat</label>
+          <input hlmInput type="text" id="producto-soat" name="producto-soat" placeholder="Soat"
+            formControlName="soat" />
+        </div>
+      </hlm-form-field>
+      <button class="custom-button" type="submit">Añadir</button>
+    </form>
+  </hlm-sheet-content>
+</hlm-sheet>

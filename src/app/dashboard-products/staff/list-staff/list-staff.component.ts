@@ -1,55 +1,43 @@
-import { AsyncPipe } from "@angular/common";
-import {
-	ChangeDetectionStrategy,
-	Component,
-	ElementRef,
-	inject,
-	signal,
-	viewChild,
-	viewChildren,
-} from "@angular/core";
-import { forkJoin, tap } from "rxjs";
-import type { Product } from "../../models";
-import { InfoProductsService } from "../../services";
-import { AddProductComponent } from "../add-product/add-product.component";
-import { DialogDeleteProductComponent } from "../dialogs/delete-product.component";
-import { EditProductComponent } from "../edit-product/edit-product.component";
+import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild, viewChildren } from '@angular/core';
+import { DeleteStaffComponent } from "../delete-staff/delete-staff.component";
+import { AddStaffComponent } from "../add-staff/add-staff.component";
+import { EditStaffComponent } from "../edit-staff/edit-staff.component";
+import { AsyncPipe } from '@angular/common';
+import { tap, forkJoin } from 'rxjs';
+import type { Staff } from '../../models';
+import { InfoStaffService } from '../../services/info-staff.service';
+
 
 @Component({
-	selector: "app-product-list",
-	standalone: true,
-	imports: [
-		AddProductComponent,
-		DialogDeleteProductComponent,
-		AsyncPipe,
-		EditProductComponent,
-	],
-	templateUrl: "./product-list.component.html",
-	styleUrl: "./product-list.component.css",
-	changeDetection: ChangeDetectionStrategy.OnPush,
-	host: {
+  selector: 'app-list-staff',
+  standalone: true,
+  imports: [DeleteStaffComponent, AddStaffComponent, EditStaffComponent, AsyncPipe],
+  templateUrl: './list-staff.component.html',
+  styleUrl: './list-staff.component.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  host: {
     'class': 'wrapper'
   }
 })
-export default class ProductListComponent {
-	mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
+export default class ListStaffComponent {
+  mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
 	childrenCheckbox =
 		viewChildren<ElementRef<HTMLInputElement>>("childrenCheckbox");
 	isVisible = signal(false);
-	listProductsSelect = signal<string[]>([]);
+	listProductsSelect = signal<number[]>([]);
 	loading = signal(false);
 
 	//Injects
-	productService = inject(InfoProductsService);
+	productService = inject(InfoStaffService);
 
 	//****//
 
 	products$ = this.productService
-		.getAllProducts()
+		.getAllStaff()
 		.pipe(tap(() => this.loading.set(true)));
 
 	ngOnInit() {
-		this.productService.getAllProducts().subscribe((resp) => console.log(resp));
+		this.productService.getAllStaff().subscribe((resp) => console.log(resp));
 	}
 
 	onCheckboxAll() {
@@ -62,17 +50,17 @@ export default class ProductListComponent {
 			this.isVisible.set(false);
 			return;
 		}
-		const list = this.childrenCheckbox().map((checkbox) => {
+		const list: number[] = this.childrenCheckbox().map((checkbox) => {
 			checkbox.nativeElement.checked = true;
-			return checkbox.nativeElement.value;
+			return Number(checkbox.nativeElement.value);
 		});
 
-		const uniqueList = [...new Set(list)];
+		const uniqueList: number[] = [...new Set(list)];
 		this.listProductsSelect.set(uniqueList);
 		this.isVisible.set(true);
 	}
 
-	onCheckbox(product: Product) {
+	onCheckbox(product: Staff) {
 		console.log(product);
 		const productIndex = this.listProductsSelect().indexOf(product.id);
 
@@ -117,6 +105,6 @@ export default class ProductListComponent {
 	}
 
 	refresh() {
-		this.products$ = this.productService.getAllProducts();
+		this.products$ = this.productService.getAllStaff();
 	}
 }

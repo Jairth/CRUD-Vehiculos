@@ -1,3 +1,3 @@
-:host() {
-  /* --flow-space: 2rem; */
+:host {
+  --flow-space: 2rem;
 }
