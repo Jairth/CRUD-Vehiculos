@@ -30,7 +30,7 @@ import { NavComponent } from './shared/components/nav/nav.component';
   }
 })
 export class AppComponent {
-  title = 'reactiveForms';
+  title = 'Dashboard Autos SAC';
   private supabaseService = inject(SupabaseService);
 
   async ngOnInit() {

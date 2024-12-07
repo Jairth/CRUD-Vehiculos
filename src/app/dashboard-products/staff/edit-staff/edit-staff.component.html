@@ -12,80 +12,75 @@
   <hlm-dialog-content class="sm:max-w-[425px]" *brnDialogContent="let ctx">
     <form class="flow" [formGroup]="productForm()" (ngSubmit)="editProduct(ctx)">
       <hlm-form-field>
-        <label hlmLabel for="product-marca">Marca</label>
-        <input required hlmInput type="text" id="product-marca" name="product-marca" placeholder="Marca"
-          formControlName="marca" />
-        <hlm-error>La marca es obligatoria</hlm-error>
+        <label hlmLabel for="product-nombre">Nombre</label>
+        <input required hlmInput type="text" id="product-nombre" name="product-nombre" placeholder="Nombre"
+          formControlName="nombre" />
+        <hlm-error>El nombre es obligatoria</hlm-error>
       </hlm-form-field>
       <hlm-form-field>
-        <label hlmLabel for="product-modelo">Modelo</label>
-        <input required hlmInput type="text" id="product-modelo" name="product-modelo" placeholder="Modelo"
-          formControlName="modelo" />
-        <hlm-error>El modelo es obligatorio</hlm-error>
+        <label hlmLabel for="product-email">Correo</label>
+        <input required hlmInput type="email" id="product-email" name="product-email" placeholder="@Correo"
+          formControlName="email" />
+        <hlm-error>El correo es obligatorio</hlm-error>
       </hlm-form-field>
 
       <hlm-form-field>
-        <label hlmLabel for="category">Categoría</label>
-        <brn-select class="inline-block" placeholder="Categoría del vehículo" formControlName="categoria">
+        <label hlmLabel for="product-celular">Celular</label>
+        <input required hlmInput type="number" id="product-celular" name="product-celular" placeholder="Celular"
+          formControlName="celular" />
+        <hlm-error>El celular es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="tipo-documento">Tipo documento</label>
+        <brn-select class="inline-block" placeholder="Tipo de documento" formControlName="tipo_documento">
           <hlm-select-trigger>
             <hlm-select-value />
           </hlm-select-trigger>
           <hlm-select-content>
-            <hlm-option value="Camioneta">Camioneta</hlm-option>
-            <hlm-option value="Deportivo">Deportivo</hlm-option>
-            <hlm-option value="Mini Van">Mini Van</hlm-option>
-            <hlm-option value="SUV">SUV</hlm-option>
-            <hlm-option value="Convertible">Convertible</hlm-option>
-            <hlm-option value="Sedán">Sedán</hlm-option>
-            <hlm-option value="Stagion Wagon">Stagion Wagon</hlm-option>
-            <hlm-option value="Camioneta pick-up">Camioneta pick-up</hlm-option>
-            <hlm-option value="Coupé">Coupé</hlm-option>
-            <hlm-option value="Arenero">Arenero</hlm-option>
+            <hlm-option value="DNI">DNI</hlm-option>
+            <hlm-option value="RUC">RUC</hlm-option>
+            <hlm-option value="Carnet extranjeria">Carnet extranjeria</hlm-option>
           </hlm-select-content>
         </brn-select>
-        <hlm-error>La categoría es obligatoria</hlm-error>
+        <hlm-error>El tipo de documento es obligatoria</hlm-error>
       </hlm-form-field>
       <hlm-form-field>
         <div class="form-row">
-          <label hlmLabel for="producto-imagen">URL Imagen</label>
-          <input hlmInput type="text" id="producto-imagen" name="producto-imagen" placeholder="URL Imagen"
-            formControlName="imagen" />
+          <label hlmLabel for="producto-documento">Número de documento</label>
+          <input hlmInput type="number" id="producto-documento" name="producto-documento" placeholder="Número de documento"
+            formControlName="documento" />
         </div>
+        <hlm-error>El número de documento es obligatorio</hlm-error>
       </hlm-form-field>
       <hlm-form-field>
-        <label hlmLabel for="product-placa">Placa</label>
-        <input hlmInput type="text" id="product-placa" name="product-placa" placeholder="Placa"
-          formControlName="placa" />
-      </hlm-form-field>
-      <hlm-form-field>
-        <div class="form-row">
-          <label hlmLabel for="nro-asientos">Número de asientos</label>
-          <input hlmInput type="number" id="nro-asientos" name="nro-asientos" placeholder="Número de asientos"
-            formControlName="numero_asientos" />
-        </div>
+        <label hlmLabel for="product-licencia">Licencia</label>
+        <input hlmInput type="number" id="product-licencia" name="product-licencia" placeholder="Licencia"
+          formControlName="licencia" />
+        <hlm-error>La licencia es obligatoria</hlm-error>
       </hlm-form-field>
       <hlm-form-field>
         <div class="form-row">
-          <label hlmLabel for="producto-color">Color</label>
-          <input hlmInput type="text" id="producto-color" name="producto-color" placeholder="Color"
-            formControlName="color" />
+          <label hlmLabel for="fecha-nacimiento">Fecha de nacimiento</label>
+          <input hlmInput type="date" id="fecha-nacimiento" name="fecha-nacimiento" placeholder="Número de asientos"
+            formControlName="nacimiento" />
         </div>
       </hlm-form-field>
       <hlm-form-field>
-        <div class="form-row">
-          <label hlmLabel for="producto-transmision">Transmisión</label>
-          <input hlmInput type="text" id="producto-transmision" name="producto-transmision" placeholder="Transimisión"
-            formControlName="transmision" />
-        </div>
+        <label hlmLabel for="producto-comunicacion">Preferencia de comunicación</label>
+        <brn-select class="inline-block" placeholder="Preferencia de comunicación" formControlName="preferencia_comunicacion">
+          <hlm-select-trigger>
+            <hlm-select-value />
+          </hlm-select-trigger>
+          <hlm-select-content>
+            <hlm-option value="WhatsApp">WhatsApp</hlm-option>
+            <hlm-option value="Facebook">Facebook</hlm-option>
+            <hlm-option value="Instagram">Instagram</hlm-option>
+          </hlm-select-content>
+        </brn-select>
+        <!-- <hlm-error>El tipo de documento es obligatoria</hlm-error> -->
       </hlm-form-field>
-      <hlm-form-field>
-        <div class="form-row">
-          <label hlmLabel for="producto-soat">Soat</label>
-          <input hlmInput type="text" id="producto-soat" name="producto-soat" placeholder="Soat"
-            formControlName="soat" />
-        </div>
-      </hlm-form-field>
-      <button class="custom-button" type="submit">Edit product</button>
+      <button class="custom-button" type="submit">Editar cliente</button>
     </form>
   </hlm-dialog-content>
 </hlm-dialog>

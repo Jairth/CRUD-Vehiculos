@@ -67,9 +67,7 @@ export class EditStaffComponent {
 			preferencia_comunicacion: new FormControl<string | null>(null, {
 				validators: Validators.required,
 			}),
-			administrador_dni: new FormControl<string | null>(null, {
-				validators: Validators.required,
-			}),
+			administrador_dni: new FormControl<string | null>(null),
 		}),
 	);
 
@@ -93,7 +91,7 @@ export class EditStaffComponent {
 				nacimiento: this.productForm().value.nacimiento ?? "",
 				nombre: this.productForm().value.nombre ?? "",
 				preferencia_comunicacion: this.productForm().value.preferencia_comunicacion ?? "",
-				administrador_dni: this.productForm().value.administrador_dni ?? "",
+				administrador_dni: this.productForm().value.administrador_dni ?? null,
 			})
 			.subscribe({
 				next: (resp) => {

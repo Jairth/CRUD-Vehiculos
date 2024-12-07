@@ -75,3 +75,22 @@ export interface StaffForm {
 	preferencia_comunicacion: FormControl <string | null>;
 	administrador_dni?: FormControl< string | null>;
 }
+
+export interface Clients {
+	dni: number;
+	domicilio: string;
+	email: string;
+	licencia: number;
+	celular: number;
+	nombre: string;
+	rol: string;
+}
+export interface ClientsForm {
+	dni: FormControl<number | null>;
+	domicilio: FormControl<string | null>;
+	email: FormControl<string | null>;
+	licencia: FormControl<number | null>;
+	nombre: FormControl<string | null>;
+	celular: FormControl<number | null>;
+	rol: FormControl<string | null>;
+}

@@ -31,8 +31,9 @@
   & tbody td {
     font-size: 14px;
     text-align: center;
-    vertical-align: top;
+    vertical-align: middle;
     padding: 1.5rem 1.2rem;
+    text-wrap-mode: nowrap;
   }
   & tr:not(:last-child) {
     border-bottom: 2px solid #000;

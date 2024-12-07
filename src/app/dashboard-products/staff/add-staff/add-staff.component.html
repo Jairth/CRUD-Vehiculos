@@ -1,14 +1,14 @@
 <hlm-sheet side="right">
   <button class="custom-button" id="add-product" brnSheetTrigger>
-    Añadir empleado
+    Añadir cliente
   </button>
   <hlm-sheet-content *brnSheetContent="let ctx">
-    <h2 class="title">Añadir empleado</h2>
+    <h2 class="title">Añadir cliente</h2>
 
     <form class="flow" [formGroup]="productForm()" (ngSubmit)="addProduct(ctx)">
       <hlm-form-field>
         <label hlmLabel for="product-nombre">Nombre</label>
-        <input required hlmInput type="text" id="product-nombre" name="product-nombre" placeholder="Marca"
+        <input required hlmInput type="text" id="product-nombre" name="product-nombre" placeholder="Nombre"
           formControlName="nombre" />
         <hlm-error>El nombre es obligatoria</hlm-error>
       </hlm-form-field>
@@ -50,7 +50,7 @@
       </hlm-form-field>
       <hlm-form-field>
         <label hlmLabel for="product-licencia">Licencia</label>
-        <input hlmInput type="text" id="product-licencia" name="product-licencia" placeholder="Licencia"
+        <input hlmInput type="number" id="product-licencia" name="product-licencia" placeholder="Licencia"
           formControlName="licencia" />
         <hlm-error>La licencia es obligatoria</hlm-error>
       </hlm-form-field>

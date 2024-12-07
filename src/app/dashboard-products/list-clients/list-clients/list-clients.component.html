@@ -1,6 +1,6 @@
 <div class="container__page">
   <div class="title-row">
-    <h3 class="title">Lista de clientes</h3>
+    <h3 class="title">Lista de empleados</h3>
     @if (isVisible()) {
     <div class="delete">
       <span>{{ this.listProductsSelect().length }} Select</span>
@@ -18,36 +18,36 @@
           <th class="tb-head">
             <input type="checkbox" #mainCheckbox (click)="onCheckboxAll()" />
           </th>
-          <th class="tb-head">Marca</th>
-          <th class="tb-head">Modelo</th>
-          <th class="tb-head description">Color - Placa - Soat</th>
-          <th class="tb-head">Transmision</th>
+          <th class="tb-head">Nombre</th>
+          <th class="tb-head">Domicilio</th>
+          <th class="tb-head">DNI</th>
+          <th class="tb-head">Licencia - Celular</th>
+          <th class="tb-head">Rol</th>
           <th class="tb-head"></th>
         </tr>
       </thead>
       <tbody>
-        @for (product of products; track product.id) {
+        @for (product of products; track product.dni) {
         <tr>
-          <td class="vertical-center">
-            <input type="checkbox" [name]="product.name" [value]="product.id" #childrenCheckbox
+          <td >
+            <input type="checkbox" [name]="product.nombre" [value]="product.dni" #childrenCheckbox
               (click)="onCheckbox(product)" />
           </td>
-          <td class="product-name">
-            <picture class="product-image">
-              <img [src]="product.imagen" [alt]="product.name" />
-            </picture>
-            <h5>{{ product.marca }}</h5>
+          <td >
+            <h5>{{ product.nombre }}</h5>
           </td>
-          <td class="vertical-center">
-            <span>{{ product.modelo }}</span>
+          <td >
+            <span>{{ product.domicilio }}</span>
           </td>
           <td>
-            <span>{{ product.color }}</span> -
-            <span>{{ product.placa }}</span> -
-            <span>{{ product.soat }}</span>
+            <span>{{ product.dni }}</span>
           </td>
-          <td class="vertical-center">
-            <span>{{ product.transmision }}</span>
+          <td >
+            <span>{{ product.licencia }}</span> -
+            <span>{{ product.celular }}</span>
+          </td>
+          <td >
+            <span>{{ product.rol }}</span>
           </td>
           <td>
             <app-edit-client [client]="product" (productEdit)="refresh()" />

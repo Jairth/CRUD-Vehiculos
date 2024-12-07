@@ -1,11 +1,11 @@
 import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild, viewChildren } from '@angular/core';
 import { tap, forkJoin } from 'rxjs';
-import type { Product } from '../../models';
-import { InfoProductsService } from '../../services';
+import type { Clients, Product } from '../../models';
 import { AsyncPipe } from '@angular/common';
 import { AddClientComponent } from '../add-client/add-client.component';
 import { DialogsComponent } from '../dialogs/dialogs.component';
 import { EditClientComponent } from '../edit-client/edit-client.component';
+import { InfoClientsService } from '../../services/info-clients.service';
 
 @Component({
   selector: 'app-list-clients',
@@ -28,20 +28,20 @@ export default class ListClientsComponent {
 	childrenCheckbox =
 		viewChildren<ElementRef<HTMLInputElement>>("childrenCheckbox");
 	isVisible = signal(false);
-	listProductsSelect = signal<string[]>([]);
+	listProductsSelect = signal<any>([]);
 	loading = signal(false);
 
 	//Injects
-	productService = inject(InfoProductsService);
+	productService = inject(InfoClientsService);
 
 	//****//
 
 	products$ = this.productService
-		.getAllProducts()
+		.getAllClients()
 		.pipe(tap(() => this.loading.set(true)));
 
 	ngOnInit() {
-		this.productService.getAllProducts().subscribe((resp) => console.log(resp));
+		this.productService.getAllClients().subscribe((resp) => console.log(resp));
 	}
 
 	onCheckboxAll() {
@@ -64,14 +64,14 @@ export default class ListClientsComponent {
 		this.isVisible.set(true);
 	}
 
-	onCheckbox(product: Product) {
+	onCheckbox(product: Clients) {
 		console.log(product);
-		const productIndex = this.listProductsSelect().indexOf(product.id);
+		const productIndex = this.listProductsSelect().indexOf(product.dni);
 
 		if (productIndex !== -1) {
 			this.listProductsSelect().splice(productIndex, 1);
 		} else {
-			this.listProductsSelect().push(product.id);
+			this.listProductsSelect().push(product.dni);
 		}
 
 		console.log(this.listProductsSelect());
@@ -87,7 +87,7 @@ export default class ListClientsComponent {
 		this.loading.set(false);
 		const selectProducts = this.listProductsSelect();
 
-		const deleteObservables = selectProducts.map((productId) =>
+		const deleteObservables = selectProducts.map((productId:any) =>
 			this.productService.deleteProducts(productId),
 		);
 
@@ -109,6 +109,6 @@ export default class ListClientsComponent {
 	}
 
 	refresh() {
-		this.products$ = this.productService.getAllProducts();
+		this.products$ = this.productService.getAllClients();
 	}
 }

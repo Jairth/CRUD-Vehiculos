@@ -33,7 +33,7 @@ export class InfoStaffService {
 		nacimiento: string;
 		nombre: string;
 		preferencia_comunicacion: string;
-		administrador_dni: string;
+		administrador_dni: string | null;
 	}) {
     console.log(product)
 		return from(
@@ -61,7 +61,7 @@ export class InfoStaffService {
 		nacimiento: string;
 		nombre: string;
 		preferencia_comunicacion: string;
-		administrador_dni: string;
+		administrador_dni: string | null;
 	}) {
 		const { id, ...dataWithoutId } = product;
 		return from(

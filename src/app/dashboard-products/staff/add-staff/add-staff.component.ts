@@ -61,19 +61,15 @@ export class AddStaffComponent {
 			preferencia_comunicacion: new FormControl<string | null>(null, {
 				validators: Validators.required,
 			}),
-			administrador_dni: new FormControl<string | null>(null, {
-				validators: Validators.required,
-			}),
+			administrador_dni: new FormControl<string | null>(null),
 		}),
 	);
 
 	addProduct(ctx: any) {
-		console.log(this.productForm().value);
 		if (this.productForm().invalid) return;
 		console.log(this.productForm().value);
 
-		this.productService
-			.addProduct({
+		this.productService.addProduct({
 				celular: this.productForm().value.celular ?? null,
 				tipo_documento: this.productForm().value.tipo_documento ?? "",
 				documento: this.productForm().value.documento ?? 0,
@@ -82,7 +78,7 @@ export class AddStaffComponent {
 				nacimiento: this.productForm().value.nacimiento ?? "",
 				nombre: this.productForm().value.nombre ?? "",
 				preferencia_comunicacion: this.productForm().value.preferencia_comunicacion ?? "",
-				administrador_dni: this.productForm().value.administrador_dni ?? "",
+				administrador_dni: this.productForm().value.administrador_dni ?? null,
 			})
 			.subscribe({
 				next: (resp) => {

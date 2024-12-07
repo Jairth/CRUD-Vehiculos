@@ -1,6 +1,6 @@
 <div class="container__page">
   <div class="title-row">
-    <h3 class="title">Lista de empleados</h3>
+    <h3 class="title">Lista de clientes</h3>
     @if (isVisible()) {
     <div class="delete">
       <span>{{ this.listProductsSelect().length }} Select</span>
@@ -48,7 +48,7 @@
             <span>{{ product.preferencia_comunicacion }}</span>
           </td>
           <td>
-            <app-edit-staff [staff]="product" (productEdit)="refresh()" />
+            <app-edit-staff [staff]="product" (staffEdit)="refresh()" />
           </td>
         </tr>
         } @empty {
