@@ -50,7 +50,7 @@
             <span>{{ product.rol }}</span>
           </td>
           <td>
-            <app-edit-client [client]="product" (productEdit)="refresh()" />
+            <app-edit-client [client]="product" (clientEdit)="refresh()" />
           </td>
         </tr>
         } @empty {

@@ -15,7 +15,7 @@ export class InfoClientsService {
 
 	deleteProducts(id: string) {
 		return from(
-			this.supabaseClient.from("administrador").delete().eq("id", id),
+			this.supabaseClient.from("administrador").delete().eq("dni", id),
 		).pipe(switchMap(() => this.getAllClients()));
 	}
 
@@ -63,7 +63,7 @@ export class InfoClientsService {
 				.update({
 					...dataWithoutId,
 				})
-				.eq("id", product.dni)
+				.eq("dni", product.dni)
 				.select(),
 		);
 	}

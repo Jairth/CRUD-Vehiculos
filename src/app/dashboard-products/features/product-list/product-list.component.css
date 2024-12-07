@@ -31,7 +31,7 @@
   & tbody td {
     font-size: 14px;
     text-align: center;
-    vertical-align: top;
+    vertical-align: middle;
     padding: 1.5rem 1.2rem;
   }
   & tr:not(:last-child) {
@@ -51,6 +51,12 @@
     display: inline-block;
     margin-block-start: 0.75rem;
   }
+}
+
+.image-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 .text-center {
   text-align: center;

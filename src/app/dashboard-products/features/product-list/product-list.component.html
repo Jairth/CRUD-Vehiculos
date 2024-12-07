@@ -20,7 +20,7 @@
           </th>
           <th class="tb-head">Marca</th>
           <th class="tb-head">Modelo</th>
-          <th class="tb-head description">Color - Placa - Soat</th>
+          <th class="tb-head">Color - Placa - Soat</th>
           <th class="tb-head">Transmision</th>
           <th class="tb-head"></th>
         </tr>
@@ -28,17 +28,17 @@
       <tbody>
         @for (product of products; track product.id) {
         <tr>
-          <td class="vertical-center">
+          <td>
             <input type="checkbox" [name]="product.name" [value]="product.id" #childrenCheckbox
               (click)="onCheckbox(product)" />
           </td>
-          <td class="product-name">
+          <td class="image-wrapper">
             <picture class="product-image">
               <img [src]="product.imagen" [alt]="product.name" />
             </picture>
             <h5>{{ product.marca }}</h5>
           </td>
-          <td class="vertical-center">
+          <td>
             <span>{{ product.modelo }}</span>
           </td>
           <td>
@@ -46,7 +46,7 @@
             <span>{{ product.placa }}</span> -
             <span>{{ product.soat }}</span>
           </td>
-          <td class="vertical-center">
+          <td>
             <span>{{ product.transmision }}</span>
           </td>
           <td>
