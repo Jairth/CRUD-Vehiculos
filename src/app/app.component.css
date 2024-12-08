@@ -1,3 +1,32 @@
-:host {
-  --flow-space: 2rem;
+/* :host(.dashboard__grid) {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 2rem;
 }
+
+:host(.wrapper) {
+  --boxed-size: 95rem;
+} */
+
+:host() {
+  display: block;
+  height: calc(100vh - 4rem);
+  min-height: 783px;
+}
+
+.dashboard__grid {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 1.5rem;
+}
+
+.wrapper {
+  --boxed-size: 95rem;
+}
+/*
+@media (height <= 800px) {
+  :host() {
+    height: auto;
+  }
+} */

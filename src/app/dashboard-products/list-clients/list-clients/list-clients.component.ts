@@ -1,30 +1,35 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild, viewChildren } from '@angular/core';
-import { tap, forkJoin } from 'rxjs';
-import type { Clients, Product } from '../../models';
-import { AsyncPipe } from '@angular/common';
-import { AddClientComponent } from '../add-client/add-client.component';
-import { DialogsComponent } from '../dialogs/dialogs.component';
-import { EditClientComponent } from '../edit-client/edit-client.component';
-import { InfoClientsService } from '../../services/info-clients.service';
+import { AsyncPipe } from "@angular/common";
+import {
+	ChangeDetectionStrategy,
+	Component,
+	ElementRef,
+	inject,
+	signal,
+	viewChild,
+	viewChildren,
+} from "@angular/core";
+import { forkJoin, tap } from "rxjs";
+import type { Clients } from "../../models";
+import { InfoClientsService } from "../../services/info-clients.service";
+import { AddClientComponent } from "../add-client/add-client.component";
+import { DialogsComponent } from "../dialogs/dialogs.component";
+import { EditClientComponent } from "../edit-client/edit-client.component";
 
 @Component({
-  selector: 'app-list-clients',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    AddClientComponent,
-    DialogsComponent,
-    EditClientComponent
-  ],
-  templateUrl: './list-clients.component.html',
-  styleUrl: './list-clients.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    'class': 'wrapper'
-  }
+	selector: "app-list-clients",
+	standalone: true,
+	imports: [
+		AsyncPipe,
+		AddClientComponent,
+		DialogsComponent,
+		EditClientComponent,
+	],
+	templateUrl: "./list-clients.component.html",
+	styleUrl: "./list-clients.component.css",
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ListClientsComponent {
-  mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
+	mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
 	childrenCheckbox =
 		viewChildren<ElementRef<HTMLInputElement>>("childrenCheckbox");
 	isVisible = signal(false);
@@ -87,7 +92,7 @@ export default class ListClientsComponent {
 		this.loading.set(false);
 		const selectProducts = this.listProductsSelect();
 
-		const deleteObservables = selectProducts.map((productId:any) =>
+		const deleteObservables = selectProducts.map((productId: any) =>
 			this.productService.deleteProducts(productId),
 		);
 

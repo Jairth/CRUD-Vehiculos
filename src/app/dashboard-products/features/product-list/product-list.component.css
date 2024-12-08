@@ -1,5 +1,6 @@
 :host {
   display: block;
+  height: 100%;
 }
 
 .title {
@@ -27,7 +28,7 @@
 }
 .table {
   width: 100%;
-  min-width: 60rem;
+  /* min-width: 60rem; */
   & tbody td {
     font-size: 14px;
     text-align: center;

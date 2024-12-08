@@ -1,26 +1,35 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, signal, viewChild, viewChildren } from '@angular/core';
-import { DeleteStaffComponent } from "../delete-staff/delete-staff.component";
+import { AsyncPipe } from "@angular/common";
+import {
+	ChangeDetectionStrategy,
+	Component,
+	ElementRef,
+	inject,
+	signal,
+	viewChild,
+	viewChildren,
+} from "@angular/core";
+import { forkJoin, tap } from "rxjs";
+import type { Staff } from "../../models";
+import { InfoStaffService } from "../../services/info-staff.service";
 import { AddStaffComponent } from "../add-staff/add-staff.component";
+import { DeleteStaffComponent } from "../delete-staff/delete-staff.component";
 import { EditStaffComponent } from "../edit-staff/edit-staff.component";
-import { AsyncPipe } from '@angular/common';
-import { tap, forkJoin } from 'rxjs';
-import type { Staff } from '../../models';
-import { InfoStaffService } from '../../services/info-staff.service';
-
 
 @Component({
-  selector: 'app-list-staff',
-  standalone: true,
-  imports: [DeleteStaffComponent, AddStaffComponent, EditStaffComponent, AsyncPipe],
-  templateUrl: './list-staff.component.html',
-  styleUrl: './list-staff.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  host: {
-    'class': 'wrapper'
-  }
+	selector: "app-list-staff",
+	standalone: true,
+	imports: [
+		DeleteStaffComponent,
+		AddStaffComponent,
+		EditStaffComponent,
+		AsyncPipe,
+	],
+	templateUrl: "./list-staff.component.html",
+	styleUrl: "./list-staff.component.css",
+	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class ListStaffComponent {
-  mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
+	mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
 	childrenCheckbox =
 		viewChildren<ElementRef<HTMLInputElement>>("childrenCheckbox");
 	isVisible = signal(false);

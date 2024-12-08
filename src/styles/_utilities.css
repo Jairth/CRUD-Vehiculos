@@ -23,7 +23,8 @@ brn-select label {
   }
 }
 .wrapper {
-  --boxed-size: 71.25rem;
+  /* --boxed-size: 71.25rem; */
+  --boxed-size: 90rem;
   --boxed: max(calc((100vw - var(--boxed-size)) / 2), 1.25rem);
   padding-inline: var(--boxed) !important;
 }
@@ -33,10 +34,11 @@ brn-select label {
 }
 
 .container__page {
+  height: 100%;
   background-color: #fff;
   display: flex;
   align-items: var(--align-items, center);
-  justify-content: var(--justify-content, space-between);
+  /* justify-content: var(--justify-content, space-between); */
   border-radius: 2.5rem;
 
   border: 2px solid #000;

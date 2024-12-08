@@ -1,3 +1,8 @@
-:host * + * {
-  margin-block-start: 1.5rem;
+:host() {
+  display: block;
+  height: 100%;
+}
+
+section {
+  height: 100%;
 }

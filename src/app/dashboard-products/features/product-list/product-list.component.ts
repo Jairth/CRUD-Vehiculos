@@ -27,9 +27,6 @@ import { EditProductComponent } from "../edit-product/edit-product.component";
 	templateUrl: "./product-list.component.html",
 	styleUrl: "./product-list.component.css",
 	changeDetection: ChangeDetectionStrategy.OnPush,
-	host: {
-    'class': 'wrapper'
-  }
 })
 export default class ProductListComponent {
 	mainCheckbox = viewChild<ElementRef<HTMLInputElement>>("mainCheckbox");
