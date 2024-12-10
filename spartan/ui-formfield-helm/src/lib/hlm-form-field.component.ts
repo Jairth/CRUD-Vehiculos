@@ -1,11 +1,18 @@
-import { Component, type Signal, computed, contentChild, contentChildren, effect } from '@angular/core';
+import {
+	Component,
+	type Signal,
+	computed,
+	contentChild,
+	contentChildren,
+	effect,
+} from "@angular/core";
 
-import { BrnFormFieldControl } from '@spartan-ng/ui-form-field-brain';
-import { HlmErrorDirective } from './hlm-error.directive';
+import { BrnFormFieldControl } from "@spartan-ng/ui-form-field-brain";
+import { HlmErrorDirective } from "./hlm-error.directive";
 
 @Component({
-  selector: 'hlm-form-field',
-  template: `
+	selector: "hlm-form-field",
+	template: `
 		<ng-content></ng-content>
 
 		@switch (hasDisplayedMessage()) {
@@ -17,25 +24,28 @@ import { HlmErrorDirective } from './hlm-error.directive';
 			}
 		}
 	`,
-  standalone: true,
-  host: {
-    class: 'form-row',
-  },
+	standalone: true,
+	host: {
+		class: "form-row",
+	},
 })
 export class HlmFormFieldComponent {
-  control = contentChild(BrnFormFieldControl);
+	control = contentChild(BrnFormFieldControl);
 
-  errorChildren = contentChildren(HlmErrorDirective);
+	errorChildren = contentChildren(HlmErrorDirective);
 
-  hasDisplayedMessage: Signal<'error' | 'hint'> = computed(() => {
-    return this.errorChildren() && this.errorChildren().length > 0 && this.control()?.errorState() ? 'error' : 'hint';
-  });
+	hasDisplayedMessage: Signal<"error" | "hint"> = computed(() => {
+		const hasError = this.control()?.errorState() ?? false;
+		const hasErrorsInContent = this.errorChildren()?.length > 0;
 
-  constructor() {
-    effect(() => {
-      if (!this.control()) {
-        throw new Error('hlm-form-field must contain a BrnFormFieldControl.');
-      }
-    })
-  }
+		return hasError && hasErrorsInContent ? "error" : "hint";
+	});
+
+	constructor() {
+		effect(() => {
+			if (!this.control()) {
+				throw new Error("hlm-form-field must contain a BrnFormFieldControl.");
+			}
+		});
+	}
 }

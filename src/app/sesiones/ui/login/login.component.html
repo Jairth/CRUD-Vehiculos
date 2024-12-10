@@ -1,0 +1,23 @@
+<section>
+  <div class="container__page container__sesion">
+    <div>
+      <h2 class="title">Iniciar sesión</h2>
+      <h3>¿No tienes una cuenta? <a routerLink="/sesions/register">Registrarse</a></h3>
+    </div>
+    <form class="flow form__wrapper" [formGroup]="loginForm()" (ngSubmit)="signIn()">
+      <hlm-form-field>
+        <label hlmLabel for="product-marca">Email</label>
+        <input required hlmInput type="email" id="product-marca" name="product-marca" placeholder="Marca"
+          formControlName="email" />
+        <hlm-error>El correo es obligatorio</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="product-modelo">Contraseña</label>
+        <input required hlmInput type="password" id="product-modelo" name="product-modelo" placeholder="Modelo"
+          formControlName="password" />
+        <hlm-error>La contraseña es obligatoria</hlm-error>
+      </hlm-form-field>
+      <button class="custom-button" type="submit">Iniciar sesión</button>
+    </form>
+  </div>
+</section>

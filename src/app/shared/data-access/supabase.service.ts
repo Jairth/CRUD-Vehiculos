@@ -13,15 +13,15 @@ export class SupabaseService {
 			environment.SUPABASE_KEY,
 		);
 	}
-	async signIn(): Promise<any> {
-		try {
-			const auth = await this.supabaseClient.auth.signInWithPassword({
-				email: "admin@admin.com",
-				password: "123456a",
-			});
-			return auth;
-		} catch (error) {
-			throw error;
-		}
-	}
+	// async signIn(): Promise<any> {
+	// 	try {
+	// 		const auth = await this.supabaseClient.auth.signInWithPassword({
+	// 			email: "admin@admin.com",
+	// 			password: "123456a",
+	// 		});
+	// 		return auth;
+	// 	} catch (error) {
+	// 		throw error;
+	// 	}
+	// }
 }

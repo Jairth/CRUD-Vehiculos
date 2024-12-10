@@ -1,0 +1,23 @@
+.container__sesion {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 2rem;
+}
+.form__wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+  gap: 1rem;
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-align: center;
+  margin-block-end: 0.8rem;
+}
+a {
+  transition: color 250ms ease;
+}
+a:hover {
+  color: #ff6565;
+}

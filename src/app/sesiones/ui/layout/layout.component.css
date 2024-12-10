@@ -1,0 +1,9 @@
+:host() {
+  height: calc(100vh - 4rem);
+}
+
+:host(.container) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
