@@ -1,4 +1,5 @@
 import type { Routes } from "@angular/router";
+import { authGuard } from "./sesiones/guards/auth.guard";
 
 export const routes: Routes = [
 	// {
@@ -9,6 +10,7 @@ export const routes: Routes = [
 		path: "dashboard",
 		loadChildren: () =>
 			import("./dashboard-products/dashboard-products.routes"),
+		canActivate: [authGuard]
 	},
 	{
 		path: "sesions",

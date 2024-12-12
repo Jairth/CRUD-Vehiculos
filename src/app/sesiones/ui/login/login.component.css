@@ -16,8 +16,10 @@
   margin-block-end: 0.8rem;
 }
 a {
+  color: #ff6565;
+  font-weight: 600;
   transition: color 250ms ease;
 }
 a:hover {
-  color: #ff6565;
+  color: #673ab7;
 }

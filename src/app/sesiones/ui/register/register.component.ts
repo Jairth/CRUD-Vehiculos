@@ -12,7 +12,7 @@ import {
 	ReactiveFormsModule,
 	Validators,
 } from "@angular/forms";
-import { RouterLink } from "@angular/router";
+import { Router, RouterLink } from "@angular/router";
 import {
 	BrnAlertDialogContentDirective,
 	BrnAlertDialogTriggerDirective,
@@ -33,6 +33,7 @@ import {
 	HlmSelectModule,
 } from "../../../../../spartan/ui-select-helm/src";
 import { SesionsService } from "../../services/sesions.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
 	selector: "app-register",
@@ -64,7 +65,8 @@ export default class RegisterComponent {
 	//Injects
 	private readonly sesionsService = inject(SesionsService);
 	private fb = inject(FormBuilder);
-	private cdr = inject(ChangeDetectorRef);
+	private toast = inject(ToastrService);
+	private router = inject(Router)
 
 	loginForm = signal(
 		this.fb.group({
@@ -93,8 +95,10 @@ export default class RegisterComponent {
 		const result = await this.sesionsService.signUp(email!, password!);
 
 		if (result.success) {
-			this.alertDialog()!.open();
+			// this.alertDialog()!.open();
+			this.toast.success("Cuenta registrada correctamente.")
 			this.resetForm();
+			this.router.navigate(['sesions/login']);
 		} else {
 			console.error("Error durante el registro:", result.error);
 		}

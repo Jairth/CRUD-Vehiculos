@@ -57,13 +57,15 @@ export default class LoginComponent {
 		if (this.loginForm().invalid) return;
 
 		const { email, password } = this.loginForm().value;
-		const result = await this.sesionsService.signUp(email!, password!);
+		const result = await this.sesionsService.logIn(email!, password!);
 
-		if (result.success) {
+		console.log(result)
+		if (result.data) {
 			this.resetForm();
 			this.router.navigate(["/dashboard"]);
 		} else {
-			console.error("Error durante el registro:", result.error);
+			this.resetForm();
+			console.error("Error durante el inicio de sesión:", result.error);
 		}
 	}
 

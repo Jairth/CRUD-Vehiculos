@@ -4,6 +4,8 @@
 @import "./styles/_background-body.css";
 @import "./styles/_utilities.css";
 
+@import "ngx-toastr/toastr";
+
 /* lexend-exa-latin-wght-normal */
 @font-face {
   font-family: "Lexend Exa Variable";
