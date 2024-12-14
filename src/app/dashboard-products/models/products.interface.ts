@@ -77,6 +77,7 @@ export interface StaffForm {
 }
 
 export interface Clients {
+	id: number;
 	dni: number;
 	domicilio: string;
 	email: string;
@@ -86,6 +87,7 @@ export interface Clients {
 	rol: string;
 }
 export interface ClientsForm {
+	id?: FormControl<number | null>;
 	dni: FormControl<number | null>;
 	domicilio: FormControl<string | null>;
 	email: FormControl<string | null>;

@@ -48,6 +48,7 @@ export class InfoClientsService {
 	}
 
 	editProduct(product: {
+		id: number;
 		dni: number | null;
 		nombre: string | null;
 		celular: number | null;
@@ -56,14 +57,14 @@ export class InfoClientsService {
 		rol: string | null;
 		email: string | null;
 	}) {
-		const { dni, ...dataWithoutId } = product;
+		const { id, ...dataWithoutId }  = product;
 		return from(
 			this.supabaseClient
 				.from("administrador")
 				.update({
-					...dataWithoutId,
+					...dataWithoutId
 				})
-				.eq("dni", product.dni)
+				.eq("id", product.id)
 				.select(),
 		);
 	}

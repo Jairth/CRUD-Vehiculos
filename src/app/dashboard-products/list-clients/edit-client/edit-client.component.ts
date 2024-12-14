@@ -43,6 +43,9 @@ export class EditClientComponent {
 
 	productForm = signal(
 		this.fb.group<ClientsForm>({
+			id: new FormControl<number | null>(null, {
+				validators: Validators.required,
+			}),
 			dni: new FormControl<number | null>(null, {
 				validators: Validators.required,
 			}),
@@ -72,10 +75,11 @@ export class EditClientComponent {
 		const formData = { ...this.productForm().value };
 
 		// Eliminamos el campo `id` para que no se envíe
-		delete formData.dni;
+		// delete formData.dni;
 
 		this.productService
 			.editProduct({
+				id: this.productForm().value.id ?? 0,
 				dni: this.productForm().value.dni!,
 				nombre: this.productForm().value.nombre ?? "",
 				celular: this.productForm().value.celular ?? 0,
