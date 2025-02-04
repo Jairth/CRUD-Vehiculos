@@ -1,0 +1,22 @@
+.container__page {
+  flex-flow: column nowrap;
+  --align-items: normal;
+  gap: 3rem;
+}
+
+.grid-graphics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+
+  & h2 {
+    text-align: center;
+    margin-block-end: 1rem;
+  }
+}
+
+.rental {
+  grid-column: span 2;
+}

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { from, switchMap, map } from 'rxjs';
 import { SupabaseService } from '../../shared';
-import { Clients, Vehiculo } from '../models';
+import type { Clients, Vehiculo } from '../models';
 
 @Injectable({
   providedIn: 'root'

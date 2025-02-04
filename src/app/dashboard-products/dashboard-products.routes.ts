@@ -18,6 +18,10 @@ export default [
         loadComponent: () => import('./staff/list-staff/list-staff.component')
       },
       {
+        path: 'reports',
+        loadComponent: () => import('./report-charts/report-charts.component')
+      },
+      {
         path: '**',
         redirectTo: 'list-cars'
       }

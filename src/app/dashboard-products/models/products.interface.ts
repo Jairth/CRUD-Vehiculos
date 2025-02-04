@@ -32,6 +32,8 @@ export interface Vehiculo {
 	placa: string;
 	soat: string;
 	transmision: string;
+	price: string;
+	ocupantes: string;
 }
 
 export interface vehiculoForm {
@@ -65,15 +67,15 @@ export interface Staff {
 
 export interface StaffForm {
 	id?: FormControl<number | null>;
-	celular: FormControl <number | null>;
-	tipo_documento: FormControl <string | null>;
-	documento: FormControl <number | null>;
-	email: FormControl <string | null>;
-	licencia: FormControl <number | null>;
-	nacimiento: FormControl <string | null>;
-	nombre: FormControl <string | null>;
-	preferencia_comunicacion: FormControl <string | null>;
-	administrador_dni?: FormControl< string | null>;
+	celular: FormControl<number | null>;
+	tipo_documento: FormControl<string | null>;
+	documento: FormControl<number | null>;
+	email: FormControl<string | null>;
+	licencia: FormControl<number | null>;
+	nacimiento: FormControl<string | null>;
+	nombre: FormControl<string | null>;
+	preferencia_comunicacion: FormControl<string | null>;
+	administrador_dni?: FormControl<string | null>;
 }
 
 export interface Clients {
