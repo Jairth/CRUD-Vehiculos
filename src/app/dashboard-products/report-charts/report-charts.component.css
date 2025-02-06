@@ -20,3 +20,15 @@
 .rental {
   grid-column: span 2;
 }
+
+@media (max-width: 1024px) {
+  .grid-graphics {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .grid-graphics div {
+    width: 100%;
+  }
+}
