@@ -14,3 +14,9 @@ section {
 
   height: calc(100vh - 4rem);
 }
+
+@media (max-width: 1024px) {
+  .dashboard__grid {
+    grid-template-columns: minmax(100%, 1fr);
+  }
+}

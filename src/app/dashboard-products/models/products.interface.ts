@@ -98,3 +98,55 @@ export interface ClientsForm {
 	celular: FormControl<number | null>;
 	rol: FormControl<string | null>;
 }
+
+export interface Rents {
+	id: number;
+	fecha_inicio: number;
+	fecha_fin: string;
+	adicional: number;
+	seguro: number;
+	lugar_entrega: string;
+	garantia: string;
+	cliente_id: number;
+	vehiculo_id: number;
+	estado_id: number;
+}
+
+export interface RentsForm {
+	id?: FormControl<number | null>;
+	fecha_inicio: FormControl<number | null>;
+	fecha_fin: FormControl<string | null>;
+	adicional: FormControl<number | null>;
+	seguro: FormControl<number | null>;
+	lugar_entrega: FormControl<string | null>;
+	garantia: FormControl<string | null>;
+	cliente_id: FormControl<number | null>;
+	vehiculo_id: FormControl<number | null>;
+	estado_id: FormControl<number | null>;
+}
+
+export interface Payment {
+	id: number;
+	alquiler_id: number;
+	monto_vehiculo: number;
+	fecha_pago: string;
+	metodo_pago: string;
+	estado_id: number;
+	monto_adicional: number;
+	monto_igv: number;
+	monto_total: number;
+	comprobante: number;
+}
+
+export interface PaymentForm {
+	id: FormControl<number | null>;
+	alquiler_id: FormControl<number | null>;
+	monto_vehiculo: FormControl<number | null>;
+	fecha_pago: FormControl<string | null>;
+	metodo_pago: FormControl<string | null>;
+	estado_id: FormControl<number | null>;
+	monto_adicional: FormControl<number | null>;
+	monto_igv: FormControl<number | null>;
+	monto_total: FormControl<number | null>;
+	comprobante: FormControl<number | null>;
+}

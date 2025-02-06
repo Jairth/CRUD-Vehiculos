@@ -1,4 +1,4 @@
-import { Routes } from "@angular/router";
+import type { Routes } from "@angular/router";
 
 export default [
   {
@@ -16,6 +16,14 @@ export default [
       {
         path: 'list-staff',
         loadComponent: () => import('./staff/list-staff/list-staff.component')
+      },
+      {
+        path: 'rents',
+        loadComponent: () => import('./rents/list-rent/list-rent.component')
+      },
+      {
+        path: 'payments',
+        loadComponent: () => import('./payments/payments.component')
       },
       {
         path: 'reports',

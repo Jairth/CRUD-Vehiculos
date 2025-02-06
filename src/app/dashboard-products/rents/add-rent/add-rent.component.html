@@ -1,0 +1,81 @@
+<hlm-sheet side="right">
+  <button class="custom-button" id="add-product" brnSheetTrigger>
+    Añadir alquiler
+  </button>
+  <hlm-sheet-content *brnSheetContent="let ctx">
+    <h2 class="title">Añadir alquiler</h2>
+
+    <form class="flow" [formGroup]="rentForm()" (ngSubmit)="addRent(ctx)">
+      <hlm-form-field>
+        <label hlmLabel for="rent-date-init">Fecha inicio</label>
+        <input required hlmInput type="date" id="rent-date-init" name="rent-date-init" placeholder="Fecha de inicio"
+          formControlName="nombre" />
+        <hlm-error>La fecha de inicio es obligatorio</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="rent-date-end">Fecha final</label>
+        <input required hlmInput type="date" id="rent-date-end" name="rent-date-end" placeholder="Fecha final"
+          formControlName="fecha_fin" />
+        <hlm-error>La fecha final es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="state-rent">Estado alquiler</label>
+        <brn-select class="inline-block" placeholder="Estado del alquiler" formControlName="estado_id">
+          <hlm-select-trigger>
+            <hlm-select-value />
+          </hlm-select-trigger>
+          <hlm-select-content>
+            <hlm-option value="1">Reservado</hlm-option>
+            <hlm-option value="2">Alquilado</hlm-option>
+            <hlm-option value="3">Cancelado</hlm-option>
+          </hlm-select-content>
+        </brn-select>
+        <hlm-error>El estado de alquiler es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+          <label hlmLabel for="aditional">Adicional</label>
+          <input required hlmInput type="text" id="aditional" name="aditional" placeholder="Adicional"
+            formControlName="adicional" />
+          <hlm-error>El adicional es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="seguro">Seguro</label>
+        <input hlmInput type="number" id="seguro" name="seguro" placeholder="Seguro"
+          formControlName="seguro" />
+        <hlm-error>El seguro es obligatorio</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="place-delivery">Lugar de entrega</label>
+          <input hlmInput type="number" id="place-delivery" name="place-delivery" placeholder="Lugar de entrega"
+            formControlName="lugar_entrega" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="warranty">Garantia</label>
+          <input hlmInput type="number" id="warranty" name="warranty" placeholder="Garantia"
+            formControlName="garantia" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="car">Vehículo</label>
+          <input hlmInput type="number" id="car" name="car" placeholder="Garantia"
+            formControlName="vehiculo_id" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="warranty">Cliente</label>
+          <input hlmInput type="number" id="warranty" name="warranty" placeholder="Garantia"
+            formControlName="garantia" />
+        </div>
+      </hlm-form-field>
+      <button class="custom-button" type="submit">Añadir</button>
+    </form>
+  </hlm-sheet-content>
+</hlm-sheet>

@@ -1,0 +1,62 @@
+<div class="container__page">
+  <div class="title-row">
+    <h3 class="title">Lista de alquileres</h3>
+    @if (isVisible()) {
+    <div class="delete">
+      <span>{{ this.listProductsSelect().length }} Select</span>
+    </div>
+    <app-dialogs (rentDelete)="onDeleteRents()" />
+    }
+    <app-add-rent (rentAdded)="refresh()" />
+  </div>
+  @let products = products$ | async;
+  @defer (when products) {
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="tb-head">
+            <input type="checkbox" #mainCheckbox (click)="onCheckboxAll()" />
+          </th>
+          <th class="tb-head">Fecha de inicio</th>
+          <th class="tb-head">Fecha final</th>
+          <th class="tb-head">Lugar entrega - Seguro - Cliente</th>
+          <th class="tb-head">Estado</th>
+          <th class="tb-head"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of products; track product.id) {
+        <tr>
+          <td>
+            <input type="checkbox" [name]="product.fecha_inicio" [value]="product.id" #childrenCheckbox
+              (click)="onCheckbox(product)" />
+          </td>
+          <td>
+            <h5>{{ product.fecha_fin }}</h5>
+          </td>
+          <td>
+            <span>{{ product.garantia }}</span>
+          </td>
+          <td>
+            <span>{{ product.lugar_entrega }}</span> -
+            <span>{{ product.seguro }}</span> -
+            <span>{{ product.estado_id }}</span>
+          </td>
+          <td>
+            <span>{{ product.cliente_id }}</span>
+          </td>
+          <td>
+            <!-- <app-edit-rent [product]="product" (productEdit)="refresh()" /> -->
+          </td>
+        </tr>
+        } @empty {
+        <h4 class="empty">Sin alquileres disponibles</h4>
+        }
+      </tbody>
+    </table>
+  </div>
+  } @placeholder (minimum 1s) {
+  <h1>Loading...</h1>
+  }
+</div>

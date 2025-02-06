@@ -34,11 +34,11 @@
     text-align: center;
     vertical-align: middle;
     padding: 1.5rem 1.2rem;
+    text-wrap-mode: nowrap;
   }
   & tr:not(:last-child) {
     border-bottom: 2px solid #000;
   }
-
   & tbody td > * {
     text-wrap-mode: wrap;
   }
