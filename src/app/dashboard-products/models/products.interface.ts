@@ -139,7 +139,7 @@ export interface Payment {
 }
 
 export interface PaymentForm {
-	id: FormControl<number | null>;
+	id?: FormControl<number | null>;
 	alquiler_id: FormControl<number | null>;
 	monto_vehiculo: FormControl<number | null>;
 	fecha_pago: FormControl<string | null>;

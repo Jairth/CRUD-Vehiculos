@@ -1,0 +1,18 @@
+:host {
+  #cdk-overlay-1 {
+    width: auto !important;
+  }
+}
+.custom-button {
+  --mb-start: 0;
+}
+.title {
+  --txt-size: 1.4rem;
+  text-align: left;
+  margin-block-end: 1.5rem;
+}
+form {
+  & .custom-button {
+    --mb-start: 2rem;
+  }
+}

@@ -1,1 +1,80 @@
-<p>add-payment works!</p>
+<hlm-sheet side="right">
+  <button class="custom-button" id="add-product" brnSheetTrigger>
+    Añadir alquiler
+  </button>
+  <hlm-sheet-content *brnSheetContent="let ctx">
+    <h2 class="title">Añadir alquiler</h2>
+
+    <form class="flow" [formGroup]="paymentForm()" (ngSubmit)="addPayment(ctx)">
+      <hlm-form-field>
+        <label hlmLabel for="rent-date-init">Alquiler ID</label>
+        <input required hlmInput type="number" id="rent-date-init" name="rent-date-init" placeholder="Alquiler ID"
+          formControlName="alquiler_id" readonly/>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="monto-vehiculo">Monto del vehículo</label>
+        <input required hlmInput type="number" id="monto-vehiculo" name="monto-vehiculo" placeholder="Monto del vehículo"
+          formControlName="monto_vehiculo" />
+        <hlm-error>El monto es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="metodo-pago">Método del pago</label>
+        <brn-select class="inline-block" placeholder="Método del pago" formControlName="metodo_pago">
+          <hlm-select-trigger>
+            <hlm-select-value />
+          </hlm-select-trigger>
+          <hlm-select-content>
+            <hlm-option value="Transferencia">Transferencia</hlm-option>
+            <hlm-option value="Tarjeta de crédito">Tarjeta de crédito</hlm-option>
+            <hlm-option value="Yape">Yape</hlm-option>
+          </hlm-select-content>
+        </brn-select>
+        <hlm-error>El método del pago es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+          <label hlmLabel for="data-payment">Fecha del pago</label>
+          <input required hlmInput type="date" id="data-payment" name="data-payment" placeholder="Fecha del pago"
+            formControlName="fecha_pago" />
+          <hlm-error>La fecha del pago es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="estado">Estado</label>
+        <input hlmInput type="number" id="estado" name="estado" placeholder="Estado"
+          formControlName="estado_id" />
+        <hlm-error>El estado es obligatorio</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="igv">IGV</label>
+          <input hlmInput type="number" id="igv" name="igv" placeholder="IGV"
+            formControlName="monto_igv" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="monto-total">Monto total</label>
+          <input hlmInput type="number" id="monto-total" name="monto-total" placeholder="Monto total"
+            formControlName="monto_total" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="comprobante">Comprobante</label>
+          <input hlmInput type="number" id="comprobante" name="comprobante" placeholder="Comprobante"
+            formControlName="comprobante" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="monto-adicional">Monto adicional</label>
+          <input hlmInput type="number" id="monto-adicional" name="monto-adicional" placeholder="Garantia"
+            formControlName="monto_adicional" />
+        </div>
+      </hlm-form-field>
+      <button class="custom-button" type="submit">Añadir</button>
+    </form>
+  </hlm-sheet-content>
+</hlm-sheet>

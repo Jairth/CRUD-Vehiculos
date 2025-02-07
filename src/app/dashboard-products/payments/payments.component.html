@@ -1,5 +1,71 @@
 <div class="container__page">
   <div class="title-row">
     <h3 class="title">Lista de pagos</h3>
+    @if (isVisible()) {
+      <div class="delete">
+        <span>{{ this.listProductsSelect().length }} Select</span>
+      </div>
+      <app-dialogs (rentDelete)="onDeleteRents()" />
+      }
+      <app-add-payment (rentAdded)="refresh()" />
   </div>
+  @let products = products$ | async;
+  @defer (when products) {
+  <div class="table-container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="tb-head">
+            <input type="checkbox" #mainCheckbox (click)="onCheckboxAll()" />
+          </th>
+          <th class="tb-head">Alquiler ID</th>
+          <th class="tb-head">Monto del vehiculo</th>
+          <th class="tb-head">Fecha del pago</th>
+          <th class="tb-head">Metodo pago - Estado - IGV</th>
+          <th class="tb-head">Monto total - Comprobante</th>
+          <th class="tb-head">Monto adicional</th>
+          <th class="tb-head"></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of products; track product.id) {
+        <tr>
+          <td>
+            <input type="checkbox" [name]="product.alquiler_id" [value]="product.alquiler_id" #childrenCheckbox
+              (click)="onCheckbox(product)" />
+          </td>
+          <td>
+            <h5>{{ product.alquiler_id }}</h5>
+          </td>
+          <td>
+            <span>{{ product.monto_vehiculo }}</span>
+          </td>
+          <td>
+            <span>{{ product.fecha_pago }}</span>
+          </td>
+          <td>
+            <span>{{ product.metodo_pago }}</span> -
+            <span>{{ product.estado_id }}</span> -
+            <span>{{ product.monto_igv }}</span>
+          </td>
+          <td>
+            <span>{{ product.monto_total }}</span> -
+            <span>{{ product.comprobante }}</span>
+          </td>
+          <td>
+            <span>{{ product.monto_adicional }}</span>
+          </td>
+          <td>
+            <app-edit-payment [client]="product" (productEdit)="refresh()" />
+          </td>
+        </tr>
+        } @empty {
+        <h4 class="empty">Sin alquileres disponibles</h4>
+        }
+      </tbody>
+    </table>
+  </div>
+  } @placeholder (minimum 1s) {
+  <h1>Loading...</h1>
+  }
 </div>

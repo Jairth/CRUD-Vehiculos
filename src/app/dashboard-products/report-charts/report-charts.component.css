@@ -1,3 +1,8 @@
+.title {
+  --txt-size: 2rem;
+  --txt-transform: normal;
+}
+
 .container__page {
   flex-flow: column nowrap;
   --align-items: normal;

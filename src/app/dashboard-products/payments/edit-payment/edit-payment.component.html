@@ -1,1 +1,85 @@
-<p>edit-payment works!</p>
+<hlm-dialog>
+  <button id="edit-product" class="product-action" brnDialogTrigger>
+    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-pencil-square"
+      viewBox="0 0 16 16">
+      <path
+        d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+      <path fill-rule="evenodd"
+        d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z" />
+    </svg>
+  </button>
+
+  <hlm-dialog-content class="sm:max-w-[425px]" *brnDialogContent="let ctx">
+    <form class="flow" [formGroup]="paymentForm()" (ngSubmit)="editPayment(ctx)">
+      <hlm-form-field>
+        <label hlmLabel for="rent-date-init">Alquiler ID</label>
+        <input required hlmInput type="number" id="rent-date-init" name="rent-date-init" placeholder="Alquiler ID"
+          formControlName="alquiler_id" readonly/>
+      </hlm-form-field>
+      <hlm-form-field>
+        <label hlmLabel for="monto-vehiculo">Monto del vehículo</label>
+        <input required hlmInput type="number" id="monto-vehiculo" name="monto-vehiculo" placeholder="Monto del vehículo"
+          formControlName="monto_vehiculo" />
+        <hlm-error>El monto es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="metodo-pago">Método del pago</label>
+        <brn-select class="inline-block" placeholder="Método del pago" formControlName="metodo_pago">
+          <hlm-select-trigger>
+            <hlm-select-value />
+          </hlm-select-trigger>
+          <hlm-select-content>
+            <hlm-option value="Transferencia">Transferencia</hlm-option>
+            <hlm-option value="Tarjeta de crédito">Tarjeta de crédito</hlm-option>
+            <hlm-option value="Yape">Yape</hlm-option>
+          </hlm-select-content>
+        </brn-select>
+        <hlm-error>El método del pago es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+          <label hlmLabel for="data-payment">Fecha del pago</label>
+          <input required hlmInput type="date" id="data-payment" name="data-payment" placeholder="Fecha del pago"
+            formControlName="fecha_pago" />
+          <hlm-error>La fecha del pago es obligatorio</hlm-error>
+      </hlm-form-field>
+
+      <hlm-form-field>
+        <label hlmLabel for="estado">Estado</label>
+        <input hlmInput type="number" id="estado" name="estado" placeholder="Estado"
+          formControlName="estado_id" />
+        <hlm-error>El estado es obligatorio</hlm-error>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="igv">IGV</label>
+          <input hlmInput type="number" id="igv" name="igv" placeholder="IGV"
+            formControlName="monto_igv" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="monto-total">Monto total</label>
+          <input hlmInput type="number" id="monto-total" name="monto-total" placeholder="Monto total"
+            formControlName="monto_total" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="comprobante">Comprobante</label>
+          <input hlmInput type="number" id="comprobante" name="comprobante" placeholder="Comprobante"
+            formControlName="comprobante" />
+        </div>
+      </hlm-form-field>
+      <hlm-form-field>
+        <div class="form-row">
+          <label hlmLabel for="monto-adicional">Monto adicional</label>
+          <input hlmInput type="number" id="monto-adicional" name="monto-adicional" placeholder="Garantia"
+            formControlName="monto_adicional" />
+        </div>
+      </hlm-form-field>
+      <button class="custom-button" type="submit">Editar pago</button>
+    </form>
+  </hlm-dialog-content>
+</hlm-dialog>
