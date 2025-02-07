@@ -9,7 +9,7 @@ section {
 
 .dashboard__grid {
   display: grid;
-  grid-template-columns: 10rem 1fr;
+  grid-template-columns: 11rem 1fr;
   gap: 1.5rem;
 
   height: calc(100vh - 4rem);

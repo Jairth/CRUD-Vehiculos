@@ -7,7 +7,7 @@
     </div>
     <app-dialogs (rentDelete)="onDeleteRents()" />
     }
-    <app-add-rent (rentAdded)="refresh()" />
+    <!-- <app-add-rent (rentAdded)="refresh()" /> -->
   </div>
   @let products = products$ | async;
   @defer (when products) {
@@ -33,10 +33,10 @@
               (click)="onCheckbox(product)" />
           </td>
           <td>
-            <h5>{{ product.fecha_fin }}</h5>
+            <h5>{{ product.fecha_inicio }}</h5>
           </td>
           <td>
-            <span>{{ product.garantia }}</span>
+            <span>{{ product.fecha_fin }}</span>
           </td>
           <td>
             <span>{{ product.lugar_entrega }}</span> -
@@ -47,7 +47,7 @@
             <span>{{ product.cliente_id }}</span>
           </td>
           <td>
-            <!-- <app-edit-rent [product]="product" (productEdit)="refresh()" /> -->
+            <app-edit-rent [client]="product" (productEdit)="refresh()" />
           </td>
         </tr>
         } @empty {

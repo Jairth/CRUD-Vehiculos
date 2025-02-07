@@ -26,7 +26,7 @@ import {
 	HlmSheetComponent,
 	HlmSheetContentComponent,
 } from "../../../../../spartan/ui-sheet-helm/src";
-import { RentsForm } from "../../models";
+import type { RentsForm } from "../../models";
 import { RentsService } from "../../services/rents.service";
 
 @Component({
